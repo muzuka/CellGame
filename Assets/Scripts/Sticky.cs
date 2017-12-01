@@ -22,11 +22,14 @@ public class Sticky : MonoBehaviour {
 		if(touching)
 		{
 			foreach(GameObject touchedObject in touched) {
-				Vector2 force = new Vector2(touchedObject.transform.position.x - transform.position.x, touchedObject.transform.position.y - transform.position.y);
-				force.Normalize();
-				force = force * stickForce;
+                if (touchedObject.GetComponent<Sticky>() && touchedObject.GetComponent<Sticky>().type == type)
+                {
+                    Vector2 force = new Vector2(touchedObject.transform.position.x - transform.position.x, touchedObject.transform.position.y - transform.position.y);
+                    force.Normalize();
+                    force = force * stickForce;
 
-				GetComponent<Rigidbody2D>().AddForce(force);
+                    GetComponent<Rigidbody2D>().AddForce(force);
+                }
 			}
 		}
 	}
