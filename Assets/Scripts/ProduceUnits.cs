@@ -20,7 +20,7 @@ public class ProduceUnits : MonoBehaviour {
 		{
 			if(player.canSpawn())
 			{
-				newUnit = Instantiate(unitBlueprint, gameObject.transform);
+				newUnit = Instantiate(unitBlueprint);
 				Vector3 mousePos = Input.mousePosition;
 				Vector3 nucleusPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
