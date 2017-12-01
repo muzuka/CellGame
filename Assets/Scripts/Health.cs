@@ -4,10 +4,7 @@ public class Health : MonoBehaviour {
 
 	public int maxHealth;
 
-	public int health {
-		get { return health; }
-		set { health = value; }
-	}
+	public int health { get; set; }
 
 	void Start ()
 	{
