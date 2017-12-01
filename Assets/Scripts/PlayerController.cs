@@ -2,18 +2,21 @@
 
 public class PlayerController : MonoBehaviour, IPlayerMessageTarget {
 
-	int energy;
-	int maxEnergy;
-
-	void Start () {
-		energy = 0;
-		maxEnergy = 0;
-	}
+	int energy = 0;
+	int maxEnergy = 0;
 	
+    void Start ()
+    {
+        VacuoleController[] vacuoles = FindObjectsOfType<VacuoleController>();
+        maxEnergy = vacuoles.Length * 20;
+    }
+
 	public void addEnergy (int amount)
 	{
-		if(energy <= maxEnergy)
-			energy += amount;
+        if ((energy + amount) <= maxEnergy)
+            energy += amount;
+        else
+            energy = maxEnergy;
 	}
 
 	public void spawnUnit ()
